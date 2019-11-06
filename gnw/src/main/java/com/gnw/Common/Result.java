@@ -37,7 +37,7 @@ public class Result {
     }
     //成功返回
     public static Result success(Object data){
-        return new Result(400,true,data,"ERROR");
+        return new Result(400,true,data,"SUCCESS");
     }
     //成功返回
     public static Result success(Integer code,Object data,String message){
