@@ -1,5 +1,6 @@
 package com.gnw.ShrioController;
 
+import com.gnw.Common.Result;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeIndexController {
+
     @GetMapping("/login")
     public String defaultLogin() {
         return "/login";
@@ -15,7 +17,8 @@ public class HomeIndexController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        Result result=null;
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
@@ -24,21 +27,22 @@ public class HomeIndexController {
         try {
             subject.login(token);
         } catch (UnknownAccountException uae) {
-            return "未知账户";
+            result=Result.error("未知账户");
         } catch (IncorrectCredentialsException ice) {
-            return "密码不正确";
+            result=Result.error("密码不正确");
         } catch (LockedAccountException lae) {
-            return "账户已锁定";
+            result=Result.error("账户已锁定");
         } catch (ExcessiveAttemptsException eae) {
-            return "用户名或密码错误次数过多";
+            result=Result.error("用户名或密码错误次数过多");
         } catch (AuthenticationException ae) {
-            return "用户名或密码不正确！";
+            result=Result.error("用户名或密码不正确");
         }
         if (subject.isAuthenticated()) {
-            return "登录成功";
+            result=Result.success(username,"登录成功");
         } else {
             token.clear();
-            return "登录失败";
+            result=Result.error("登录失败");
         }
+        return result;
     }
 }

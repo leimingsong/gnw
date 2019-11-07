@@ -28,6 +28,10 @@ public class Result {
         return new Result(200,false,data,message);
     }
     //失败返回
+    public static Result error(String message){
+        return new Result(200,false,null,message);
+    }
+    //失败返回
     public static Result error(Integer code, Object data, String message){
         return new Result(code,false,data,message);
     }
