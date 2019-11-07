@@ -21,4 +21,8 @@ public class indexController {
     public Result addtest(Menu menu)throws Exception{
         return indexXXXService.addTest(menu);
     }
+    @RequestMapping("/index")
+    public String Index(){
+        return "/index";
+    }
 }

@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeIndexController {
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping("/login")
     public String defaultLogin() {
-        return "首页";
+        return "/login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
