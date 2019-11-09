@@ -14,7 +14,7 @@ drop table if exists details_img;
 
 drop table if exists menu;
 
-drop table if exists "order";
+drop table if exists order_tab;
 
 drop table if exists order_details;
 
@@ -26,7 +26,7 @@ drop table if exists product_details;
 
 drop table if exists product_feedback;
 
-drop table if exists right;
+drop table if exists right_tab;
 
 drop table if exists role;
 
@@ -36,7 +36,7 @@ drop table if exists shop_car;
 
 drop table if exists user;
 
-drop table if exists userDetails;
+drop table if exists user_details;
 
 drop table if exists user_role;
 
@@ -126,9 +126,9 @@ create table menu
 alter table menu comment '菜单表，用来保存菜单信息，菜单编号，菜单名字，url地址，上级菜单,菜单状态';
 
 /*==============================================================*/
-/* Table: "order"                                               */
+/* Table: order_tab                                             */
 /*==============================================================*/
-create table "order"
+create table order_tab
 (
    order_id             varchar(36) not null comment '订单编号，主键，用uuid生成',
    user_id              varchar(36) comment '用户编号，外键（关联user表的user_id字段）,用uuid来随机生成',
@@ -143,7 +143,7 @@ create table "order"
    primary key (order_id)
 );
 
-alter table "order" comment '订单表，用来保存订单的主要信息，订单编号，用户编号，总价，时间，订单数量，订单状态，收货编号';
+alter table order_tab comment '订单表，用来保存订单的主要信息，订单编号，用户编号，总价，时间，订单数量，订单状态，收货编号';
 
 /*==============================================================*/
 /* Table: order_details                                         */
@@ -228,7 +228,7 @@ create table product_feedback
    prod_feedback_id     varchar(36) not null comment '商品反馈编号，主键，用uuid随机生成',
    user_id              varchar(36) comment '用户编号，外键（关联user表的user_id字段）,用uuid来随机生成',
    prod_id              varchar(36) comment '商品编号，外键（关联product表的pro_id字段），用uuid随机生成',
-   feedback_time        datatime comment '反馈时间',
+   feedback_time        datetime comment '反馈时间',
    feedback_content     varchar(255) comment '反馈内容',
    par_feedback_id      varchar(36) comment '上级反馈编号，外键（关联本表的prod_feedback_id的字段）',
    spare1               varchar(64),
@@ -240,9 +240,9 @@ create table product_feedback
 alter table product_feedback comment '商品反馈表，用来保存商品的反馈信息，商品反馈编号，用户编号，商品编号，反馈时间，反馈内容，上级反馈编号';
 
 /*==============================================================*/
-/* Table: right                                                 */
+/* Table: right_tab                                                 */
 /*==============================================================*/
-create table right
+create table right_tab
 (
    right_id             varchar(36) not null comment '权限编号，主键，用uuid来随机生成',
    right_name           varchar(32) comment '权限名字',
@@ -253,7 +253,7 @@ create table right
    primary key (right_id)
 );
 
-alter table right comment '权限表，用于保存权限信息，权限编号，权限名字，权限描述';
+alter table right_tab comment '权限表，用于保存权限信息，权限编号，权限名字，权限描述';
 
 /*==============================================================*/
 /* Table: role                                                  */
@@ -315,7 +315,7 @@ create table user
    user_status          varchar(16) comment '用户状态',
    spare1               varchar(64) comment '备用字段',
    spare2               varchar(64) comment '备用字段',
-   spare3               varchar(64) comment '备用字段',
+   spare3               varchar(64) comment '备用字段'
    primary key (user_id),
    key AK_account (user_id, account)
 );
@@ -323,9 +323,9 @@ create table user
 alter table user comment '用户表，用来保存用户主要信息，用户编号，账号，昵称，密码，角色编号，用户状态';
 
 /*==============================================================*/
-/* Table: userDetails                                           */
+/* Table: user_details                                           */
 /*==============================================================*/
-create table userDetails
+create table user_details
 (
    uDetails_id          varchar(36) not null comment '用户基本信息编号，主键，用uuid来随机生成',
    user_id              varchar(36) comment '用户编号，外键（关联user表的userId字段）,用uuid来随机生成',
@@ -341,7 +341,7 @@ create table userDetails
    primary key (uDetails_id)
 );
 
-alter table userDetails comment '基本信息编号，用户编号（外键），真实姓名，联系方式，性别，年龄，邮箱，身份证号码';
+alter table user_details comment '基本信息编号，用户编号（外键），真实姓名，联系方式，性别，年龄，邮箱，身份证号码';
 
 /*==============================================================*/
 /* Table: user_role                                             */
@@ -353,7 +353,6 @@ create table user_role
    spare1               varchar(64) comment '备用字段',
    spare2               varchar(64) comment '备用字段',
    spare3               varchar(64) comment '备用字段',
-   primary key ()
 );
 
 alter table user_role comment '用户角色表，用来保存用户以及角色信息';
