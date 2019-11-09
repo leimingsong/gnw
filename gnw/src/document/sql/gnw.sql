@@ -1,376 +1,75 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/11/4 ĞÇÆÚÒ» 19:27:15                       */
-/*==============================================================*/
+/*
+Navicat MySQL Data Transfer
 
+Source Server         : localhost_3306
+Source Server Version : 50548
+Source Host           : localhost:3306
+Source Database       : gnw
 
-drop table if exists area;
+Target Server Type    : MYSQL
+Target Server Version : 50548
+File Encoding         : 65001
 
-drop table if exists carousel;
+Date: 2019-11-09 11:19:10
+*/
 
-drop table if exists category;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists details_img;
+-- ----------------------------
+-- Table structure for `details_img`
+-- ----------------------------
+DROP TABLE IF EXISTS `details_img`;
+CREATE TABLE `details_img` (
+  `deta_img_id` varchar(36) NOT NULL COMMENT 'ç’‡ï¸½å„æ¤¤é›æµ˜é—å›©ç´ªé™å‡¤ç´æ¶“å©šæ•­é”›å²€æ•¤uuidé—…å¿”æº€é¢ç†¸åš',
+  `prod_details_id` varchar(36) DEFAULT NULL COMMENT 'éŸå——æ§ç’‡ï¸½å„ç¼‚æ §å½¿é”›å±½î˜»é–¿î‡†ç´™éå® ä»ˆproduct_detailsç›ã„§æ®‘prod_etails_idç€›æ¥î†Œé”›å¤›ç´é¢â•±uidé—…å¿”æº€é¢ç†¸åš',
+  `deta_img_url` varchar(64) DEFAULT NULL COMMENT 'ç’‡ï¸½å„æ¤¤é›æµ˜é—å˜¦rl',
+  `spare1` varchar(64) DEFAULT NULL,
+  `spare2` varchar(64) DEFAULT NULL,
+  `spare3` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`deta_img_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ç’‡ï¸½å„æ¤¤é›æµ˜é—å›ªã€ƒé”›å²€æ•¤é‰ãƒ¤ç¹šç€›æ¨ºæµ˜é—å›©æ®‘æ¶“æ˜î›¦æ·‡â„ƒä¼…';
 
-drop table if exists menu;
+-- ----------------------------
+-- Records of details_img
+-- ----------------------------
 
-drop table if exists order_tab;
+-- ----------------------------
+-- Table structure for `order_details`
+-- ----------------------------
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE `order_details` (
+  `order_details_id` varchar(36) NOT NULL COMMENT 'ç’ãˆ å´Ÿç’‡ï¸½å„ç¼‚æ §å½¿é”›å±¼å¯Œé–¿î‡†ç´é¢â•±uidé—…å¿”æº€é¢ç†¸åš',
+  `order_id` varchar(36) DEFAULT NULL COMMENT 'ç’ãˆ å´Ÿç¼‚æ §å½¿é”›å±½î˜»é–¿î‡†ç´™éå® ä»ˆorderç›ã„§æ®‘order_idç€›æ¥î†Œé”›å¤›ç´é¢â•±uidé¢ç†¸åš',
+  `prod_id` varchar(36) DEFAULT NULL COMMENT 'éŸå——æ§ç¼‚æ §å½¿é”›å±½î˜»é–¿î‡†ç´™éå® ä»ˆproductç›ã„§æ®‘prod_idç€›æ¥î†Œé”›å¤›ç´é¢â•±uidé—…å¿”æº€é¢ç†¸åš',
+  `pre_price` varchar(32) DEFAULT NULL COMMENT 'é—æ›šç¯',
+  `prod_count` int(11) DEFAULT NULL COMMENT 'éŸå——æ§éä¼´å™º',
+  `total_price` varchar(32) DEFAULT NULL COMMENT 'é¬è®³ç¯',
+  `spare1` varchar(64) DEFAULT NULL,
+  `spare2` varchar(64) DEFAULT NULL,
+  `spare3` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`order_details_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ç’ãˆ å´Ÿç’‡ï¸½å„ç›îŸ’ç´é¢ã„¦æ½µæ·‡æ¿†ç“¨ç’ãˆ å´Ÿé¨å‹®î‡›ç¼å—•ä¿Šé­îˆ¤ç´ç’ãˆ å´Ÿç’‡ï¸½å„ç¼‚æ §å½¿é”›å²ƒî…¹é—æ› ç´ªé™å‡¤ç´éŸå——æ§ç¼‚æ §å½¿é”›å±½å´Ÿæµ å‡¤ç´éŸå——æ§éä¼´å™ºé”›å±¾â‚¬è®³ç¯';
 
-drop table if exists order_details;
+-- ----------------------------
+-- Records of order_details
+-- ----------------------------
 
-drop table if exists per_address;
+-- ----------------------------
+-- Table structure for `product_details`
+-- ----------------------------
+DROP TABLE IF EXISTS `product_details`;
+CREATE TABLE `product_details` (
+  `prod_details_id` varchar(36) NOT NULL COMMENT 'éŸå——æ§ç’‡ï¸½å„ç¼‚æ §å½¿é”›å±¼å¯Œé–¿î‡†ç´é¢â•±uidé—…å¿”æº€é¢ç†¸åš',
+  `cate_id` varchar(36) DEFAULT NULL COMMENT 'ç»«è¯²åŸ†ç¼‚æ §å½¿é”›å±½î˜»é–¿î‡†ç´™éå® ä»ˆcategoryç›ã„§æ®‘cate_idç€›æ¥î†Œé”›å¤›ç´é¢â•±uidé‘·î„å§©é¢ç†¸åš',
+  `prod_details_name` varchar(32) DEFAULT NULL COMMENT 'éŸå——æ§éšå¶‡Ğ',
+  `prod_details_comment` varchar(255) DEFAULT NULL COMMENT 'éŸå——æ§é»å¿šå ª',
+  `show_img_url` varchar(64) DEFAULT NULL COMMENT 'çæ› ãšé¥å‰§å¢–Url',
+  `spare1` varchar(64) DEFAULT NULL,
+  `spare2` varchar(64) DEFAULT NULL,
+  `spare3` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`prod_details_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='éŸå——æ§ç’‡ï¸½å„ç›îŸ’ç´é¢ã„¦æ½µæ·‡æ¿†ç“¨éŸå——æ§é¨å‹®î‡›ç¼å—•ä¿Šé­îˆ¤ç´éŸå——æ§ç’‡ï¸½å„ç¼‚æ §å½¿é”›å²€è¢«é’î‚¤ç´ªé™å‡¤ç´éŸå——æ§éšå¶‡Ğé”›å±½æ™¢éä½¹å¼¿æ©å¸®ç´çæ› ãšé¥å‰§å¢–URL	';
 
-drop table if exists product;
-
-drop table if exists product_details;
-
-drop table if exists product_feedback;
-
-drop table if exists right_tab;
-
-drop table if exists role;
-
-drop table if exists role_right;
-
-drop table if exists shop_car;
-
-drop table if exists user;
-
-drop table if exists user_details;
-
-drop table if exists user_role;
-
-drop table if exists watch;
-
-/*==============================================================*/
-/* Table: area                                                  */
-/*==============================================================*/
-create table area
-(
-   area_id              varchar(36) not null comment 'µØÖ·±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   area_name            varchar(32) comment 'µØÖ·Ãû×Ö',
-   par_area_id          varchar(36) comment 'ÉÏ¼¶µØÖ·±àºÅ£¬Íâ¼ü£¨¹ØÁª±¾±íµÄarea_id×Ö¶Î£©',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (area_id)
-);
-
-alter table area comment 'µØÇø±í£¬ÓÃÀ´±£´æµØÇøĞÅÏ¢£¬µØÖ·±àºÅ£¬µØÖ·Ãû×Ö£¬ÉÏ¼¶µØÖ·±àºÅ';
-
-/*==============================================================*/
-/* Table: carousel                                              */
-/*==============================================================*/
-create table carousel
-(
-   caro_id              varchar(36) not null comment 'ÂÖ²¥Í¼±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   caro_url             varchar(64) comment 'ÂÖ²¥Í¼µØÖ·',
-   caro_status          varchar(32) comment 'ÂÖ²¥×´Ì¬',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (caro_id)
-);
-
-alter table carousel comment 'ÂÖ²¥±í£¬ÓÃÀ´±£´æÂÖ²¥Í¼µÄÏà¹ØĞÅÏ¢£¬ÂÖ²¥±àºÅ£¬ÂÖ²¥url£¬ÂÖ²¥×´Ì¬';
-
-/*==============================================================*/
-/* Table: category                                              */
-/*==============================================================*/
-create table category
-(
-   cate_id              varchar(36) not null comment 'Àà±ğ±àºÅ£¬Ö÷¼ü£¬ÓÃuuid×Ô¶¯Éú³É',
-   par_cate_id          varchar(36) comment 'ÉÏ¼¶Àà±ğ±àºÅ£¬Íâ¼ü£¨¹ØÁª±¾±íµÄcate_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   cate_name            varchar(32) comment 'Àà±ğÃû³Æ',
-   cate_status          varchar(32) comment 'Àà±ğ×´Ì¬',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (cate_id)
-);
-
-alter table category comment 'Àà±ğ±í£¬ÓÃÀ´±£´æÉÌÆ·µÄÀà±ğĞÅÏ¢£¬Àà±ğ±àºÅ£¬ÉÏ¼¶Àà±ğ±àºÅ£¬Àà±ğÃû³Æ£¬×´Ì¬';
-
-/*==============================================================*/
-/* Table: details_img                                           */
-/*==============================================================*/
-create table details_img
-(
-   deta_img_id          varchar(36) not null comment 'ÏêÇéÒ³Í¼Æ¬±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   prod_details_id      varchar(36) comment 'ÉÌÆ·ÏêÇé±àºÅ£¬Íâ¼ü£¨¹ØÁªproduct_details±íµÄprod_etails_id×Ö¶Î£©£¬ÓÃuuidËæ»úÉú³É',
-   deta_img_url         varchar(64) comment 'ÏêÇéÒ³Í¼Æ¬Url',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (deta_img_id)
-);
-
-alter table details_img comment 'ÏêÇéÒ³Í¼Æ¬±í£¬ÓÃÀ´±£´æÍ¼Æ¬µÄÖ÷ÒªĞÅÏ¢';
-
-/*==============================================================*/
-/* Table: menu                                                  */
-/*==============================================================*/
-create table menu
-(
-   menu_id              varchar(36) not null comment '²Ëµ¥±àºÅ£¬Ö÷¼ü£¬ÓÃuuid×Ô¶¯Éú³É',
-   menu_name            varchar(32) comment '²Ëµ¥Ãû×Ö',
-   menu_address         varchar(64) comment 'urlµØÖ·',
-   par_menu_id          varchar(36) comment 'ÉÏ¼¶²Ëµ¥£¬Íâ¼ü£¨¹ØÁª±¾±íµÄmenuId×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   menu_status          varchar(32) comment '²Ëµ¥×´Ì¬',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (menu_id)
-);
-
-alter table menu comment '²Ëµ¥±í£¬ÓÃÀ´±£´æ²Ëµ¥ĞÅÏ¢£¬²Ëµ¥±àºÅ£¬²Ëµ¥Ãû×Ö£¬urlµØÖ·£¬ÉÏ¼¶²Ëµ¥,²Ëµ¥×´Ì¬';
-
-/*==============================================================*/
-/* Table: order_tab                                             */
-/*==============================================================*/
-create table order_tab
-(
-   order_id             varchar(36) not null comment '¶©µ¥±àºÅ£¬Ö÷¼ü£¬ÓÃuuidÉú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   total_price          varchar(32) comment 'ÎïÆ·×Ü¼Û',
-   order_time           datetime comment '¼ÇÂ¼¶©µ¥Éú³ÉÊ±¼ä',
-   order_count          int comment '¶©µ¥ÊıÁ¿',
-   order_state          varchar(32) comment '¶©µ¥×´Ì¬',
-   per_address_id       varchar(36) comment '¸öÈËµØÖ·±àºÅ£¬Íâ¼ü£¨¹ØÁªperAddress±íµÄperAddressId×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (order_id)
-);
-
-alter table order_tab comment '¶©µ¥±í£¬ÓÃÀ´±£´æ¶©µ¥µÄÖ÷ÒªĞÅÏ¢£¬¶©µ¥±àºÅ£¬ÓÃ»§±àºÅ£¬×Ü¼Û£¬Ê±¼ä£¬¶©µ¥ÊıÁ¿£¬¶©µ¥×´Ì¬£¬ÊÕ»õ±àºÅ';
-
-/*==============================================================*/
-/* Table: order_details                                         */
-/*==============================================================*/
-create table order_details
-(
-   order_details_id     varchar(36) not null comment '¶©µ¥ÏêÇé±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   order_id             varchar(36) comment '¶©µ¥±àºÅ£¬Íâ¼ü£¨¹ØÁªorder±íµÄorder_id×Ö¶Î£©£¬ÓÃuuidÉú³É',
-   prod_id              varchar(36) comment 'ÉÌÆ·±àºÅ£¬Íâ¼ü£¨¹ØÁªproduct±íµÄprod_id×Ö¶Î£©£¬ÓÃuuidËæ»úÉú³É',
-   pre_price            varchar(32) comment 'µ¥¼Û',
-   prod_count           int comment 'ÉÌÆ·ÊıÁ¿',
-   total_price          varchar(32) comment '×Ü¼Û',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (order_details_id)
-);
-
-alter table order_details comment '¶©µ¥ÏêÇé±í£¬ÓÃÀ´±£´æ¶©µ¥µÄÏêÏ¸ĞÅÏ¢£¬¶©µ¥ÏêÇé±àºÅ£¬¶©µ¥±àºÅ£¬ÉÌÆ·±àºÅ£¬µ¥¼Û£¬ÉÌÆ·ÊıÁ¿£¬×Ü¼Û';
-
-/*==============================================================*/
-/* Table: per_address                                           */
-/*==============================================================*/
-create table per_address
-(
-   per_address_id       varchar(36) not null comment '¸öÈËµØÖ·±àºÅ£¬Ö÷¼ü£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   per_address          varchar(255) comment '¸öÈËµØÖ·',
-   postcode             varchar(16) comment 'ÓÊ±à',
-   tel                  varchar(32) comment 'ÁªÏµµç»°£¬Ò»°ãÊÇÓĞĞ§µÄ11Îªµç»°ºÅÂë',
-   post_name            varchar(32) comment 'ÊÕ»õÈËĞÕÃû',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (per_address_id)
-);
-
-alter table per_address comment '¸öÈËÊÕ»õµØÖ·±í£¬ÓÃÀ´±£´æÓÃ»§µÄÏà¹ØÊÕ»ñĞÅÏ¢£¬µØÖ·±àºÅ£¬ÓÃ»§±àºÅ£¬µØÖ·£¬ÓÊ±à£¬ÁªÏµµç»°£¬ÊÕ»õÈËĞÕÃû';
-
-/*==============================================================*/
-/* Table: product                                               */
-/*==============================================================*/
-create table product
-(
-   prod_id              varchar(36) not null comment 'ÉÌÆ·±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   prod_details_id      varchar(36) comment 'ÉÌÆ·ÏêÇé±àºÅ£¬Íâ¼ü£¨¹ØÁªproduct_details±íµÄprod_details_id×Ö¶Î£©£¬ÓÃuuidËæ»úÉú³É',
-   prod_status          varchar(32) comment 'ÉÌÆ·×´Ì¬',
-   update_time          datetime comment '¸üĞÂÊ±¼ä',
-   real_price           varchar(32) comment 'ÉÌÆ·Êµ¼Ê¼Û¸ñ',
-   sale_price           varchar(32) comment 'ÏúÊÛ¼Û¸ñ',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (prod_id)
-);
-
-alter table product comment 'ÉÌÆ·±í£¬ÓÃÀ´±£´æÉÌÆ·µÄÖ÷ÒªĞÅÏ¢£¬ÉÌÆ·±àºÅ£¬ÉÌÆ·ÏêÇé±í±àºÅ£¬ÉÌÆ·×´Ì¬£¬¸üĞÂÊ±¼ä£¬Êµ¼Ê¼Û¸ñ£¬ÏúÊÛ¼Û¸ñ';
-
-/*==============================================================*/
-/* Table: product_details                                       */
-/*==============================================================*/
-create table product_details
-(
-   prod_details_id      varchar(36) not null comment 'ÉÌÆ·ÏêÇé±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   cate_id              varchar(36) comment 'Àà±ğ±àºÅ£¬Íâ¼ü£¨¹ØÁªcategory±íµÄcate_id×Ö¶Î£©£¬ÓÃuuid×Ô¶¯Éú³É',
-   prod_details_name    varchar(32) comment 'ÉÌÆ·Ãû³Æ',
-   prod_details_comment varchar(255) comment 'ÉÌÆ·ÃèÊö',
-   show_img_url         varchar(64) comment 'Õ¹Ê¾Í¼Æ¬Url',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (prod_details_id)
-);
-
-alter table product_details comment 'ÉÌÆ·ÏêÇé±í£¬ÓÃÀ´±£´æÉÌÆ·µÄÏêÏ¸ĞÅÏ¢£¬ÉÌÆ·ÏêÇé±àºÅ£¬Àà±ğ±àºÅ£¬ÉÌÆ·Ãû³Æ£¬ÉÌÆ·ÃèÊö£¬Õ¹Ê¾Í¼Æ¬URL	';
-
-/*==============================================================*/
-/* Table: product_feedback                                      */
-/*==============================================================*/
-create table product_feedback
-(
-   prod_feedback_id     varchar(36) not null comment 'ÉÌÆ··´À¡±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   prod_id              varchar(36) comment 'ÉÌÆ·±àºÅ£¬Íâ¼ü£¨¹ØÁªproduct±íµÄpro_id×Ö¶Î£©£¬ÓÃuuidËæ»úÉú³É',
-   feedback_time        datetime comment '·´À¡Ê±¼ä',
-   feedback_content     varchar(255) comment '·´À¡ÄÚÈİ',
-   par_feedback_id      varchar(36) comment 'ÉÏ¼¶·´À¡±àºÅ£¬Íâ¼ü£¨¹ØÁª±¾±íµÄprod_feedback_idµÄ×Ö¶Î£©',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (prod_feedback_id)
-);
-
-alter table product_feedback comment 'ÉÌÆ··´À¡±í£¬ÓÃÀ´±£´æÉÌÆ·µÄ·´À¡ĞÅÏ¢£¬ÉÌÆ··´À¡±àºÅ£¬ÓÃ»§±àºÅ£¬ÉÌÆ·±àºÅ£¬·´À¡Ê±¼ä£¬·´À¡ÄÚÈİ£¬ÉÏ¼¶·´À¡±àºÅ';
-
-/*==============================================================*/
-/* Table: right_tab                                                 */
-/*==============================================================*/
-create table right_tab
-(
-   right_id             varchar(36) not null comment 'È¨ÏŞ±àºÅ£¬Ö÷¼ü£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   right_name           varchar(32) comment 'È¨ÏŞÃû×Ö',
-   right_comment        varchar(255) comment 'È¨ÏŞÃèÊöĞÅÏ¢',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (right_id)
-);
-
-alter table right_tab comment 'È¨ÏŞ±í£¬ÓÃÓÚ±£´æÈ¨ÏŞĞÅÏ¢£¬È¨ÏŞ±àºÅ£¬È¨ÏŞÃû×Ö£¬È¨ÏŞÃèÊö';
-
-/*==============================================================*/
-/* Table: role                                                  */
-/*==============================================================*/
-create table role
-(
-   role_id              varchar(36) not null comment '½ÇÉ«±àºÅ£¬Ö÷¼ü£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   role_name            varchar(32) comment '½ÇÉ«Ãû×Ö',
-   role_comment         varchar(255) comment '½ÇÉ«µÄÃèÊöĞÅÏ¢',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (role_id)
-);
-
-alter table role comment '½ÇÉ«±í£¬ÓÃÓÚ±£´æ½ÇÉ«Ïà¹ØĞÅÏ¢£¬½ÇÉ«±àºÅ£¬½ÇÉ«Ãû×Ö£¬½ÇÉ«ÃèÊö';
-
-/*==============================================================*/
-/* Table: role_right                                            */
-/*==============================================================*/
-create table role_right
-(
-   role_id              varchar(36) comment '½ÇÉ«±àºÅ£¬Íâ¼ü£¨¹ØÁªrole±íµÄrole_id×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   right_id             varchar(36) comment 'È¨ÏŞ±àºÅ£¬Íâ¼ü£¨¹ØÁªright±íµÄright_id×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   spare1               varchar(64) comment '±¸ÓÃ×Ö¶Î1',
-   spare2               varchar(64) comment '±¸ÓÃ×Ö¶Î2',
-   spare3               varchar(64) comment '±¸ÓÃ×Ö¶Î3'
-);
-
-alter table role_right comment '½ÇÉ«È¨ÏŞ±í£¬ÓÃÀ´±£´æ½ÇÉ«¼°È¨ÏŞµÄĞÅÏ¢';
-
-/*==============================================================*/
-/* Table: shop_car                                              */
-/*==============================================================*/
-create table shop_car
-(
-   shop_carId           varchar(36) not null comment '¹ºÎï³µ±àºÅ£¬Ö÷¼ü£¬ÓÃuuidËæ»úÉú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   prod_id              varchar(36) comment 'ÉÌÆ·±àºÅ£¬Íâ¼ü£¨¹ØÁªproduct±íµÄprod_id×Ö¶Î£©£¬ÓÃuuidËæ»úÉú³É',
-   count                int(16) comment '¹ºÎï³µÊıÁ¿',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (shop_carId)
-);
-
-alter table shop_car comment '¹ºÎï³µ±í£¬ÓÃÀ´±£´æ¹ºÎï³µµÄĞÅÏ¢£¬¹ºÎï³µ±àºÅ£¬ÓÃ»§±àºÅ£¬ÉÌÆ·±àºÅ£¬ÊıÁ¿';
-
-/*==============================================================*/
-/* Table: user                                                  */
-/*==============================================================*/
-create table user
-(
-   user_id              varchar(36) not null comment 'ÓÃ»§±àºÅ£¬Ö÷¼ü,ÓÃuuidÀ´Ëæ»úÉú³É',
-   account              varchar(32) comment 'ÓÃ»§ÕËºÅ£¬Î¨Ò»£¬¿ÉÒÔÊÇÊÖ»úºÅ»òÕßÓÊÏä',
-   nickname             varchar(64) comment 'ÓÃ»§êÇ³Æ£¬ÓÃ»§×Ô¶¨ÒåµÄÃû×Ö£¬±ÈÈç¡°ÎÒÊÇº«ÔÙÎÒ³¬Ë§¡±',
-   password             varchar(64) comment 'ÓÃ»§ÃÜÂë,Ê¹ÓÃmd5¼ÓÃÜºóµÄ×Ö·û´®',
-   role_id              varchar(36) comment '½ÇÉ«±àºÅ£¬Íâ¼ü£¨¹ØÁªrole±íµÄroleId×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   user_status          varchar(16) comment 'ÓÃ»§×´Ì¬',
-   spare1               varchar(64) comment '±¸ÓÃ×Ö¶Î',
-   spare2               varchar(64) comment '±¸ÓÃ×Ö¶Î',
-   spare3               varchar(64) comment '±¸ÓÃ×Ö¶Î'
-   primary key (user_id),
-   key AK_account (user_id, account)
-);
-
-alter table user comment 'ÓÃ»§±í£¬ÓÃÀ´±£´æÓÃ»§Ö÷ÒªĞÅÏ¢£¬ÓÃ»§±àºÅ£¬ÕËºÅ£¬êÇ³Æ£¬ÃÜÂë£¬½ÇÉ«±àºÅ£¬ÓÃ»§×´Ì¬';
-
-/*==============================================================*/
-/* Table: user_details                                           */
-/*==============================================================*/
-create table user_details
-(
-   uDetails_id          varchar(36) not null comment 'ÓÃ»§»ù±¾ĞÅÏ¢±àºÅ£¬Ö÷¼ü£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuserId×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   realname             varchar(16) comment 'ÓÃ»§µÄÕæÊµĞÕÃû£¬±ÈÈç¡°ÕÅÈı¡±',
-   tel                  varchar(16) comment 'ÓÃ»§ÁªÏµ·½Ê½£¬Ò»°ãÊÇÓĞĞ§µÄ11Îªµç»°ºÅÂë',
-   gender               int(2) comment 'ÓÃ»§ĞÔ±ğ£¬¡°0¡±±íÊ¾¡°ÄĞ¡±£¬¡°1¡±±íÊ¾¡°Å®¡±',
-   age                  int(4) comment 'ÓÃ»§ÄêÁä',
-   email                varchar(32) comment 'ÓÃ»§ÓÊÏä',
-   idCard               varchar(18),
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (uDetails_id)
-);
-
-alter table user_details comment '»ù±¾ĞÅÏ¢±àºÅ£¬ÓÃ»§±àºÅ£¨Íâ¼ü£©£¬ÕæÊµĞÕÃû£¬ÁªÏµ·½Ê½£¬ĞÔ±ğ£¬ÄêÁä£¬ÓÊÏä£¬Éí·İÖ¤ºÅÂë';
-
-/*==============================================================*/
-/* Table: user_role                                             */
-/*==============================================================*/
-create table user_role
-(
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   role_id              varchar(36) comment '½ÇÉ«±àºÅ£¬Íâ¼ü£¨¹ØÁªrole±íµÄrole_id×Ö¶Î£©£¬ÓÃuuidÀ´Ëæ»úÉú³É',
-   spare1               varchar(64) comment '±¸ÓÃ×Ö¶Î',
-   spare2               varchar(64) comment '±¸ÓÃ×Ö¶Î',
-   spare3               varchar(64) comment '±¸ÓÃ×Ö¶Î',
-);
-
-alter table user_role comment 'ÓÃ»§½ÇÉ«±í£¬ÓÃÀ´±£´æÓÃ»§ÒÔ¼°½ÇÉ«ĞÅÏ¢';
-
-/*==============================================================*/
-/* Table: watch                                                 */
-/*==============================================================*/
-create table watch
-(
-   watch_id             varchar(36) not null comment '¹Ø×¢±àºÅ£¬Ö÷¼ü£¬ÓÃuuid×Ô¶¯Éú³É',
-   user_id              varchar(36) comment 'ÓÃ»§±àºÅ£¬Íâ¼ü£¨¹ØÁªuser±íµÄuser_id×Ö¶Î£©,ÓÃuuidÀ´Ëæ»úÉú³É',
-   prod_id              varchar(36) comment 'ÉÌÆ·±àºÅ£¬Íâ¼ü£¬£¨¹ØÁªproduct±íµÄproid_id×Ö¶Î£©ÓÃuuidËæ»úÉú³É',
-   watch_type           varchar(32) comment '¹Ø×¢Àà±ğ',
-   spare1               varchar(64),
-   spare2               varchar(64),
-   spare3               varchar(64),
-   primary key (watch_id)
-);
-
-alter table watch comment '¹Ø×¢±í£¬ÓÃÀ´±£´æÓÃ»§¹Ø×¢ĞÅÏ¢£¬¹Ø×¢±àºÅ£¬ÓÃ»§±àºÅ£¬ÉÌÆ·±àºÅ£¬ ¹Ø×¢Àà±ğ';
-
+-- ----------------------------
+-- Records of product_details
+-- ----------------------------
