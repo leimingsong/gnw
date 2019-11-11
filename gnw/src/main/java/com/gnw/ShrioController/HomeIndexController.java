@@ -1,28 +1,55 @@
 package com.gnw.ShrioController;
 
-import com.gnw.Common.Result;
+import com.gnw.Pojo.UserPojo.User;
+import com.gnw.Service.UserService.RoleService;
+import com.gnw.Service.UserService.UserService;
+import com.gnw.Util.Result;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeIndexController {
-
+@Autowired private UserService userService;
+    @Autowired private RoleService roleService;
     @GetMapping("/login")
     public String defaultLogin() {
         return "/login";
     }
 
+    @GetMapping("/signup")
+    public String addUser() {
+        return "/signup";
+    }
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    @ResponseBody
+    public Result addUser(User user)throws Exception{
+        Result result = userService.addUser(user);
+        return result;
+    }
+    @RequestMapping(value = "/notRole", method = RequestMethod.GET)
+    @ResponseBody
+    public Result notRole(){
+        Result result =Result.error("无权限访问");
+        return result;
+    }
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @ResponseBody
+    public Result hello(){
+        Result result =Result.success("hello");
+        return result;
+    }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public Result login(@RequestParam("account") String account, @RequestParam("password") String password) {
         Result result=null;
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(account, password);
         // 执行认证登陆
         try {
             subject.login(token);
@@ -38,7 +65,7 @@ public class HomeIndexController {
             result=Result.error("用户名或密码不正确");
         }
         if (subject.isAuthenticated()) {
-            result=Result.success(username,"登录成功");
+            result=Result.success(account,"登录成功");
         } else {
             token.clear();
             result=Result.error("登录失败");

@@ -1,6 +1,6 @@
 package com.gnw.ShrioController;
 
-import com.gnw.Common.Result;
+import com.gnw.Util.Result;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

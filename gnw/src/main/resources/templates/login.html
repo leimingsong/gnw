@@ -11,7 +11,7 @@
 </head>
 <body>
 <form>
-    username<input type="text" style="width: 200px;height: 40px" id="username"/>
+    account<input type="text" style="width: 200px;height: 40px" id="account"/>
     <br/>
     password<input type="text" style="width: 200px;height: 40px" id="password"/>
     <br/>
@@ -20,14 +20,14 @@
 </body>
 <script>
  function login() {
-     var username=$("#username").val();
+     var account=$("#account").val();
      var password=$("#password").val();
      $.ajax({
          url:"/login",
          type:"POST",
          dataType:"json",
          data:{
-             "username":username,
+             "account":account,
              "password":password
          },
          success:function(r){

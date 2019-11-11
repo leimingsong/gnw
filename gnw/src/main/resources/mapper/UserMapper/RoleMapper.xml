@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gnw.MapperImpl.testmapper.MenuMapper" >
-  <resultMap id="BaseResultMap" type="com.gnw.Pojo.testpojo.Menu" >
-    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
-    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
-    <result column="menu_address" property="menuAddress" jdbcType="VARCHAR" />
-    <result column="par_menu_id" property="parMenuId" jdbcType="VARCHAR" />
-    <result column="menu_status" property="menuStatus" jdbcType="VARCHAR" />
+<mapper namespace="com.gnw.Dao.UserMapper.RoleMapper" >
+  <resultMap id="BaseResultMap" type="com.gnw.Pojo.UserPojo.Role" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_commen" property="roleCommen" jdbcType="VARCHAR" />
+    <result column="crate_time" property="crateTime" jdbcType="TIMESTAMP" />
     <result column="spare1" property="spare1" jdbcType="VARCHAR" />
     <result column="spare2" property="spare2" jdbcType="VARCHAR" />
     <result column="spare3" property="spare3" jdbcType="VARCHAR" />
@@ -70,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    menu_id, menu_name, menu_address, par_menu_id, menu_status, spare1, spare2, spare3
+    id, role_name, role_commen, crate_time, spare1, spare2, spare3
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.testpojo.MenuExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.UserPojo.RoleExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from menu
+    from role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,44 +88,41 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from menu
-    where menu_id = #{menuId,jdbcType=VARCHAR}
+    from role
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from menu
-    where menu_id = #{menuId,jdbcType=VARCHAR}
+    delete from role
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gnw.Pojo.testpojo.MenuExample" >
-    delete from menu
+  <delete id="deleteByExample" parameterType="com.gnw.Pojo.UserPojo.RoleExample" >
+    delete from role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gnw.Pojo.testpojo.Menu" >
-    insert into menu (menu_id, menu_name, menu_address, 
-      par_menu_id, menu_status, spare1, 
-      spare2, spare3)
-    values (#{menuId,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{menuAddress,jdbcType=VARCHAR}, 
-      #{parMenuId,jdbcType=VARCHAR}, #{menuStatus,jdbcType=VARCHAR}, #{spare1,jdbcType=VARCHAR}, 
-      #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.gnw.Pojo.UserPojo.Role" >
+    insert into role (id, role_name, role_commen, 
+      crate_time, spare1, spare2, 
+      spare3)
+    values (#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleCommen,jdbcType=VARCHAR}, 
+      #{crateTime,jdbcType=TIMESTAMP}, #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=VARCHAR}, 
+      #{spare3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gnw.Pojo.testpojo.Menu" >
-    insert into menu
+  <insert id="insertSelective" parameterType="com.gnw.Pojo.UserPojo.Role" >
+    insert into role
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        menu_id,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="menuName != null" >
-        menu_name,
+      <if test="roleName != null" >
+        role_name,
       </if>
-      <if test="menuAddress != null" >
-        menu_address,
+      <if test="roleCommen != null" >
+        role_commen,
       </if>
-      <if test="parMenuId != null" >
-        par_menu_id,
-      </if>
-      <if test="menuStatus != null" >
-        menu_status,
+      <if test="crateTime != null" >
+        crate_time,
       </if>
       <if test="spare1 != null" >
         spare1,
@@ -139,20 +135,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        #{menuId,jdbcType=VARCHAR},
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="menuName != null" >
-        #{menuName,jdbcType=VARCHAR},
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
       </if>
-      <if test="menuAddress != null" >
-        #{menuAddress,jdbcType=VARCHAR},
+      <if test="roleCommen != null" >
+        #{roleCommen,jdbcType=VARCHAR},
       </if>
-      <if test="parMenuId != null" >
-        #{parMenuId,jdbcType=VARCHAR},
-      </if>
-      <if test="menuStatus != null" >
-        #{menuStatus,jdbcType=VARCHAR},
+      <if test="crateTime != null" >
+        #{crateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="spare1 != null" >
         #{spare1,jdbcType=VARCHAR},
@@ -165,29 +158,26 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gnw.Pojo.testpojo.MenuExample" resultType="java.lang.Integer" >
-    select count(*) from menu
+  <select id="countByExample" parameterType="com.gnw.Pojo.UserPojo.RoleExample" resultType="java.lang.Integer" >
+    select count(*) from role
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update menu
+    update role
     <set >
-      <if test="record.menuId != null" >
-        menu_id = #{record.menuId,jdbcType=VARCHAR},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuName != null" >
-        menu_name = #{record.menuName,jdbcType=VARCHAR},
+      <if test="record.roleName != null" >
+        role_name = #{record.roleName,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuAddress != null" >
-        menu_address = #{record.menuAddress,jdbcType=VARCHAR},
+      <if test="record.roleCommen != null" >
+        role_commen = #{record.roleCommen,jdbcType=VARCHAR},
       </if>
-      <if test="record.parMenuId != null" >
-        par_menu_id = #{record.parMenuId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuStatus != null" >
-        menu_status = #{record.menuStatus,jdbcType=VARCHAR},
+      <if test="record.crateTime != null" >
+        crate_time = #{record.crateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.spare1 != null" >
         spare1 = #{record.spare1,jdbcType=VARCHAR},
@@ -204,12 +194,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update menu
-    set menu_id = #{record.menuId,jdbcType=VARCHAR},
-      menu_name = #{record.menuName,jdbcType=VARCHAR},
-      menu_address = #{record.menuAddress,jdbcType=VARCHAR},
-      par_menu_id = #{record.parMenuId,jdbcType=VARCHAR},
-      menu_status = #{record.menuStatus,jdbcType=VARCHAR},
+    update role
+    set id = #{record.id,jdbcType=VARCHAR},
+      role_name = #{record.roleName,jdbcType=VARCHAR},
+      role_commen = #{record.roleCommen,jdbcType=VARCHAR},
+      crate_time = #{record.crateTime,jdbcType=TIMESTAMP},
       spare1 = #{record.spare1,jdbcType=VARCHAR},
       spare2 = #{record.spare2,jdbcType=VARCHAR},
       spare3 = #{record.spare3,jdbcType=VARCHAR}
@@ -217,20 +206,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.testpojo.Menu" >
-    update menu
+  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.UserPojo.Role" >
+    update role
     <set >
-      <if test="menuName != null" >
-        menu_name = #{menuName,jdbcType=VARCHAR},
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
       </if>
-      <if test="menuAddress != null" >
-        menu_address = #{menuAddress,jdbcType=VARCHAR},
+      <if test="roleCommen != null" >
+        role_commen = #{roleCommen,jdbcType=VARCHAR},
       </if>
-      <if test="parMenuId != null" >
-        par_menu_id = #{parMenuId,jdbcType=VARCHAR},
-      </if>
-      <if test="menuStatus != null" >
-        menu_status = #{menuStatus,jdbcType=VARCHAR},
+      <if test="crateTime != null" >
+        crate_time = #{crateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="spare1 != null" >
         spare1 = #{spare1,jdbcType=VARCHAR},
@@ -242,17 +228,16 @@
         spare3 = #{spare3,jdbcType=VARCHAR},
       </if>
     </set>
-    where menu_id = #{menuId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.testpojo.Menu" >
-    update menu
-    set menu_name = #{menuName,jdbcType=VARCHAR},
-      menu_address = #{menuAddress,jdbcType=VARCHAR},
-      par_menu_id = #{parMenuId,jdbcType=VARCHAR},
-      menu_status = #{menuStatus,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.UserPojo.Role" >
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_commen = #{roleCommen,jdbcType=VARCHAR},
+      crate_time = #{crateTime,jdbcType=TIMESTAMP},
       spare1 = #{spare1,jdbcType=VARCHAR},
       spare2 = #{spare2,jdbcType=VARCHAR},
       spare3 = #{spare3,jdbcType=VARCHAR}
-    where menu_id = #{menuId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

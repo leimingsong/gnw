@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gnw.MapperImpl.testmapper.AreaMapper" >
-  <resultMap id="BaseResultMap" type="com.gnw.Pojo.testpojo.Area" >
-    <id column="area_id" property="areaId" jdbcType="VARCHAR" />
-    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
-    <result column="par_area_id" property="parAreaId" jdbcType="VARCHAR" />
+<mapper namespace="com.gnw.Dao.UserMapper.PerssionMapper" >
+  <resultMap id="BaseResultMap" type="com.gnw.Pojo.UserPojo.Perssion" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="right_name" property="rightName" jdbcType="VARCHAR" />
+    <result column="right_comment" property="rightComment" jdbcType="VARCHAR" />
+    <result column="right_url" property="rightUrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="spare1" property="spare1" jdbcType="VARCHAR" />
     <result column="spare2" property="spare2" jdbcType="VARCHAR" />
     <result column="spare3" property="spare3" jdbcType="VARCHAR" />
@@ -68,15 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    area_id, area_name, par_area_id, spare1, spare2, spare3
+    id, right_name, right_comment, right_url, create_time, spare1, spare2, spare3
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.testpojo.AreaExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.UserPojo.PerssionExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from area
+    from perssion
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,38 +89,44 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from area
-    where area_id = #{areaId,jdbcType=VARCHAR}
+    from perssion
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from area
-    where area_id = #{areaId,jdbcType=VARCHAR}
+    delete from perssion
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.gnw.Pojo.testpojo.AreaExample" >
-    delete from area
+  <delete id="deleteByExample" parameterType="com.gnw.Pojo.UserPojo.PerssionExample" >
+    delete from perssion
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.gnw.Pojo.testpojo.Area" >
-    insert into area (area_id, area_name, par_area_id, 
-      spare1, spare2, spare3
-      )
-    values (#{areaId,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{parAreaId,jdbcType=VARCHAR}, 
-      #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.gnw.Pojo.UserPojo.Perssion" >
+    insert into perssion (id, right_name, right_comment, 
+      right_url, create_time, spare1, 
+      spare2, spare3)
+    values (#{id,jdbcType=VARCHAR}, #{rightName,jdbcType=VARCHAR}, #{rightComment,jdbcType=VARCHAR}, 
+      #{rightUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{spare1,jdbcType=VARCHAR}, 
+      #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.gnw.Pojo.testpojo.Area" >
-    insert into area
+  <insert id="insertSelective" parameterType="com.gnw.Pojo.UserPojo.Perssion" >
+    insert into perssion
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="areaId != null" >
-        area_id,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="areaName != null" >
-        area_name,
+      <if test="rightName != null" >
+        right_name,
       </if>
-      <if test="parAreaId != null" >
-        par_area_id,
+      <if test="rightComment != null" >
+        right_comment,
+      </if>
+      <if test="rightUrl != null" >
+        right_url,
+      </if>
+      <if test="createTime != null" >
+        create_time,
       </if>
       <if test="spare1 != null" >
         spare1,
@@ -131,14 +139,20 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="areaId != null" >
-        #{areaId,jdbcType=VARCHAR},
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="areaName != null" >
-        #{areaName,jdbcType=VARCHAR},
+      <if test="rightName != null" >
+        #{rightName,jdbcType=VARCHAR},
       </if>
-      <if test="parAreaId != null" >
-        #{parAreaId,jdbcType=VARCHAR},
+      <if test="rightComment != null" >
+        #{rightComment,jdbcType=VARCHAR},
+      </if>
+      <if test="rightUrl != null" >
+        #{rightUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="spare1 != null" >
         #{spare1,jdbcType=VARCHAR},
@@ -151,23 +165,29 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.gnw.Pojo.testpojo.AreaExample" resultType="java.lang.Integer" >
-    select count(*) from area
+  <select id="countByExample" parameterType="com.gnw.Pojo.UserPojo.PerssionExample" resultType="java.lang.Integer" >
+    select count(*) from perssion
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update area
+    update perssion
     <set >
-      <if test="record.areaId != null" >
-        area_id = #{record.areaId,jdbcType=VARCHAR},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.areaName != null" >
-        area_name = #{record.areaName,jdbcType=VARCHAR},
+      <if test="record.rightName != null" >
+        right_name = #{record.rightName,jdbcType=VARCHAR},
       </if>
-      <if test="record.parAreaId != null" >
-        par_area_id = #{record.parAreaId,jdbcType=VARCHAR},
+      <if test="record.rightComment != null" >
+        right_comment = #{record.rightComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rightUrl != null" >
+        right_url = #{record.rightUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.spare1 != null" >
         spare1 = #{record.spare1,jdbcType=VARCHAR},
@@ -184,10 +204,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update area
-    set area_id = #{record.areaId,jdbcType=VARCHAR},
-      area_name = #{record.areaName,jdbcType=VARCHAR},
-      par_area_id = #{record.parAreaId,jdbcType=VARCHAR},
+    update perssion
+    set id = #{record.id,jdbcType=VARCHAR},
+      right_name = #{record.rightName,jdbcType=VARCHAR},
+      right_comment = #{record.rightComment,jdbcType=VARCHAR},
+      right_url = #{record.rightUrl,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       spare1 = #{record.spare1,jdbcType=VARCHAR},
       spare2 = #{record.spare2,jdbcType=VARCHAR},
       spare3 = #{record.spare3,jdbcType=VARCHAR}
@@ -195,14 +217,20 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.testpojo.Area" >
-    update area
+  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.UserPojo.Perssion" >
+    update perssion
     <set >
-      <if test="areaName != null" >
-        area_name = #{areaName,jdbcType=VARCHAR},
+      <if test="rightName != null" >
+        right_name = #{rightName,jdbcType=VARCHAR},
       </if>
-      <if test="parAreaId != null" >
-        par_area_id = #{parAreaId,jdbcType=VARCHAR},
+      <if test="rightComment != null" >
+        right_comment = #{rightComment,jdbcType=VARCHAR},
+      </if>
+      <if test="rightUrl != null" >
+        right_url = #{rightUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="spare1 != null" >
         spare1 = #{spare1,jdbcType=VARCHAR},
@@ -214,15 +242,17 @@
         spare3 = #{spare3,jdbcType=VARCHAR},
       </if>
     </set>
-    where area_id = #{areaId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.testpojo.Area" >
-    update area
-    set area_name = #{areaName,jdbcType=VARCHAR},
-      par_area_id = #{parAreaId,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.UserPojo.Perssion" >
+    update perssion
+    set right_name = #{rightName,jdbcType=VARCHAR},
+      right_comment = #{rightComment,jdbcType=VARCHAR},
+      right_url = #{rightUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       spare1 = #{spare1,jdbcType=VARCHAR},
       spare2 = #{spare2,jdbcType=VARCHAR},
       spare3 = #{spare3,jdbcType=VARCHAR}
-    where area_id = #{areaId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -1,16 +1,17 @@
-package com.gnw.Pojo.testpojo;
+package com.gnw.Pojo.UserPojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class AreaExample {
+public class PerssionExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public AreaExample() {
+    public PerssionExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,213 +105,343 @@ public class AreaExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andAreaIdIsNull() {
-            addCriterion("area_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdIsNotNull() {
-            addCriterion("area_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdEqualTo(String value) {
-            addCriterion("area_id =", value, "areaId");
+        public Criteria andIdEqualTo(String value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdNotEqualTo(String value) {
-            addCriterion("area_id <>", value, "areaId");
+        public Criteria andIdNotEqualTo(String value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdGreaterThan(String value) {
-            addCriterion("area_id >", value, "areaId");
+        public Criteria andIdGreaterThan(String value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdGreaterThanOrEqualTo(String value) {
-            addCriterion("area_id >=", value, "areaId");
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdLessThan(String value) {
-            addCriterion("area_id <", value, "areaId");
+        public Criteria andIdLessThan(String value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdLessThanOrEqualTo(String value) {
-            addCriterion("area_id <=", value, "areaId");
+        public Criteria andIdLessThanOrEqualTo(String value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdLike(String value) {
-            addCriterion("area_id like", value, "areaId");
+        public Criteria andIdLike(String value) {
+            addCriterion("id like", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdNotLike(String value) {
-            addCriterion("area_id not like", value, "areaId");
+        public Criteria andIdNotLike(String value) {
+            addCriterion("id not like", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdIn(List<String> values) {
-            addCriterion("area_id in", values, "areaId");
+        public Criteria andIdIn(List<String> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdNotIn(List<String> values) {
-            addCriterion("area_id not in", values, "areaId");
+        public Criteria andIdNotIn(List<String> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdBetween(String value1, String value2) {
-            addCriterion("area_id between", value1, value2, "areaId");
+        public Criteria andIdBetween(String value1, String value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaIdNotBetween(String value1, String value2) {
-            addCriterion("area_id not between", value1, value2, "areaId");
+        public Criteria andIdNotBetween(String value1, String value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameIsNull() {
-            addCriterion("area_name is null");
+        public Criteria andRightNameIsNull() {
+            addCriterion("right_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameIsNotNull() {
-            addCriterion("area_name is not null");
+        public Criteria andRightNameIsNotNull() {
+            addCriterion("right_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameEqualTo(String value) {
-            addCriterion("area_name =", value, "areaName");
+        public Criteria andRightNameEqualTo(String value) {
+            addCriterion("right_name =", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameNotEqualTo(String value) {
-            addCriterion("area_name <>", value, "areaName");
+        public Criteria andRightNameNotEqualTo(String value) {
+            addCriterion("right_name <>", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameGreaterThan(String value) {
-            addCriterion("area_name >", value, "areaName");
+        public Criteria andRightNameGreaterThan(String value) {
+            addCriterion("right_name >", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameGreaterThanOrEqualTo(String value) {
-            addCriterion("area_name >=", value, "areaName");
+        public Criteria andRightNameGreaterThanOrEqualTo(String value) {
+            addCriterion("right_name >=", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameLessThan(String value) {
-            addCriterion("area_name <", value, "areaName");
+        public Criteria andRightNameLessThan(String value) {
+            addCriterion("right_name <", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameLessThanOrEqualTo(String value) {
-            addCriterion("area_name <=", value, "areaName");
+        public Criteria andRightNameLessThanOrEqualTo(String value) {
+            addCriterion("right_name <=", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameLike(String value) {
-            addCriterion("area_name like", value, "areaName");
+        public Criteria andRightNameLike(String value) {
+            addCriterion("right_name like", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameNotLike(String value) {
-            addCriterion("area_name not like", value, "areaName");
+        public Criteria andRightNameNotLike(String value) {
+            addCriterion("right_name not like", value, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameIn(List<String> values) {
-            addCriterion("area_name in", values, "areaName");
+        public Criteria andRightNameIn(List<String> values) {
+            addCriterion("right_name in", values, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameNotIn(List<String> values) {
-            addCriterion("area_name not in", values, "areaName");
+        public Criteria andRightNameNotIn(List<String> values) {
+            addCriterion("right_name not in", values, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameBetween(String value1, String value2) {
-            addCriterion("area_name between", value1, value2, "areaName");
+        public Criteria andRightNameBetween(String value1, String value2) {
+            addCriterion("right_name between", value1, value2, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andAreaNameNotBetween(String value1, String value2) {
-            addCriterion("area_name not between", value1, value2, "areaName");
+        public Criteria andRightNameNotBetween(String value1, String value2) {
+            addCriterion("right_name not between", value1, value2, "rightName");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdIsNull() {
-            addCriterion("par_area_id is null");
+        public Criteria andRightCommentIsNull() {
+            addCriterion("right_comment is null");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdIsNotNull() {
-            addCriterion("par_area_id is not null");
+        public Criteria andRightCommentIsNotNull() {
+            addCriterion("right_comment is not null");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdEqualTo(String value) {
-            addCriterion("par_area_id =", value, "parAreaId");
+        public Criteria andRightCommentEqualTo(String value) {
+            addCriterion("right_comment =", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdNotEqualTo(String value) {
-            addCriterion("par_area_id <>", value, "parAreaId");
+        public Criteria andRightCommentNotEqualTo(String value) {
+            addCriterion("right_comment <>", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdGreaterThan(String value) {
-            addCriterion("par_area_id >", value, "parAreaId");
+        public Criteria andRightCommentGreaterThan(String value) {
+            addCriterion("right_comment >", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdGreaterThanOrEqualTo(String value) {
-            addCriterion("par_area_id >=", value, "parAreaId");
+        public Criteria andRightCommentGreaterThanOrEqualTo(String value) {
+            addCriterion("right_comment >=", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdLessThan(String value) {
-            addCriterion("par_area_id <", value, "parAreaId");
+        public Criteria andRightCommentLessThan(String value) {
+            addCriterion("right_comment <", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdLessThanOrEqualTo(String value) {
-            addCriterion("par_area_id <=", value, "parAreaId");
+        public Criteria andRightCommentLessThanOrEqualTo(String value) {
+            addCriterion("right_comment <=", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdLike(String value) {
-            addCriterion("par_area_id like", value, "parAreaId");
+        public Criteria andRightCommentLike(String value) {
+            addCriterion("right_comment like", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdNotLike(String value) {
-            addCriterion("par_area_id not like", value, "parAreaId");
+        public Criteria andRightCommentNotLike(String value) {
+            addCriterion("right_comment not like", value, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdIn(List<String> values) {
-            addCriterion("par_area_id in", values, "parAreaId");
+        public Criteria andRightCommentIn(List<String> values) {
+            addCriterion("right_comment in", values, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdNotIn(List<String> values) {
-            addCriterion("par_area_id not in", values, "parAreaId");
+        public Criteria andRightCommentNotIn(List<String> values) {
+            addCriterion("right_comment not in", values, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdBetween(String value1, String value2) {
-            addCriterion("par_area_id between", value1, value2, "parAreaId");
+        public Criteria andRightCommentBetween(String value1, String value2) {
+            addCriterion("right_comment between", value1, value2, "rightComment");
             return (Criteria) this;
         }
 
-        public Criteria andParAreaIdNotBetween(String value1, String value2) {
-            addCriterion("par_area_id not between", value1, value2, "parAreaId");
+        public Criteria andRightCommentNotBetween(String value1, String value2) {
+            addCriterion("right_comment not between", value1, value2, "rightComment");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlIsNull() {
+            addCriterion("right_url is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlIsNotNull() {
+            addCriterion("right_url is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlEqualTo(String value) {
+            addCriterion("right_url =", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlNotEqualTo(String value) {
+            addCriterion("right_url <>", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlGreaterThan(String value) {
+            addCriterion("right_url >", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("right_url >=", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlLessThan(String value) {
+            addCriterion("right_url <", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlLessThanOrEqualTo(String value) {
+            addCriterion("right_url <=", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlLike(String value) {
+            addCriterion("right_url like", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlNotLike(String value) {
+            addCriterion("right_url not like", value, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlIn(List<String> values) {
+            addCriterion("right_url in", values, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlNotIn(List<String> values) {
+            addCriterion("right_url not in", values, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlBetween(String value1, String value2) {
+            addCriterion("right_url between", value1, value2, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andRightUrlNotBetween(String value1, String value2) {
+            addCriterion("right_url not between", value1, value2, "rightUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
 

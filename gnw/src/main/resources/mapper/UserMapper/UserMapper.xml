@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gnw.Dao.UserMapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.gnw.Pojo.UserPojo.User" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="uDetails_id" property="udetailsId" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
+    <result column="dev" property="dev" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="del_time" property="delTime" jdbcType="TIMESTAMP" />
+    <result column="spare1" property="spare1" jdbcType="VARCHAR" />
+    <result column="spare2" property="spare2" jdbcType="VARCHAR" />
+    <result column="spare3" property="spare3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, uDetails_id, account, nickname, salt, password, role_id, user_status, dev, create_time, 
+    del_time, spare1, spare2, spare3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.UserPojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gnw.Pojo.UserPojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gnw.Pojo.UserPojo.User" >
+    insert into user (id, uDetails_id, account, 
+      nickname, salt, password, 
+      role_id, user_status, dev, 
+      create_time, del_time, spare1, 
+      spare2, spare3)
+    values (#{id,jdbcType=VARCHAR}, #{udetailsId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=VARCHAR}, #{userStatus,jdbcType=VARCHAR}, #{dev,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{delTime,jdbcType=TIMESTAMP}, #{spare1,jdbcType=VARCHAR}, 
+      #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gnw.Pojo.UserPojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="udetailsId != null" >
+        uDetails_id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="dev != null" >
+        dev,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="delTime != null" >
+        del_time,
+      </if>
+      <if test="spare1 != null" >
+        spare1,
+      </if>
+      <if test="spare2 != null" >
+        spare2,
+      </if>
+      <if test="spare3 != null" >
+        spare3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="udetailsId != null" >
+        #{udetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dev != null" >
+        #{dev,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delTime != null" >
+        #{delTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gnw.Pojo.UserPojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.udetailsId != null" >
+        uDetails_id = #{record.udetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salt != null" >
+        salt = #{record.salt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userStatus != null" >
+        user_status = #{record.userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dev != null" >
+        dev = #{record.dev,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delTime != null" >
+        del_time = #{record.delTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spare1 != null" >
+        spare1 = #{record.spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare2 != null" >
+        spare2 = #{record.spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare3 != null" >
+        spare3 = #{record.spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set id = #{record.id,jdbcType=VARCHAR},
+      uDetails_id = #{record.udetailsId,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      salt = #{record.salt,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=VARCHAR},
+      user_status = #{record.userStatus,jdbcType=VARCHAR},
+      dev = #{record.dev,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      del_time = #{record.delTime,jdbcType=TIMESTAMP},
+      spare1 = #{record.spare1,jdbcType=VARCHAR},
+      spare2 = #{record.spare2,jdbcType=VARCHAR},
+      spare3 = #{record.spare3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.UserPojo.User" >
+    update user
+    <set >
+      <if test="udetailsId != null" >
+        uDetails_id = #{udetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dev != null" >
+        dev = #{dev,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delTime != null" >
+        del_time = #{delTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.UserPojo.User" >
+    update user
+    set uDetails_id = #{udetailsId,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=VARCHAR},
+      dev = #{dev,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      del_time = #{delTime,jdbcType=TIMESTAMP},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

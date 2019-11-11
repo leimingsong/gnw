@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gnw.Dao.UserMapper.RoleRightMapper" >
+  <resultMap id="BaseResultMap" type="com.gnw.Pojo.UserPojo.RoleRight" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <result column="right_id" property="rightId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="spare1" property="spare1" jdbcType="VARCHAR" />
+    <result column="spare2" property="spare2" jdbcType="VARCHAR" />
+    <result column="spare3" property="spare3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, role_id, right_id, create_time, spare1, spare2, spare3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.UserPojo.RoleRightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from role_right
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from role_right
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gnw.Pojo.UserPojo.RoleRightExample" >
+    delete from role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gnw.Pojo.UserPojo.RoleRight" >
+    insert into role_right (id, role_id, right_id, 
+      create_time, spare1, spare2, 
+      spare3)
+    values (#{id,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{rightId,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=VARCHAR}, 
+      #{spare3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gnw.Pojo.UserPojo.RoleRight" >
+    insert into role_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="rightId != null" >
+        right_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="spare1 != null" >
+        spare1,
+      </if>
+      <if test="spare2 != null" >
+        spare2,
+      </if>
+      <if test="spare3 != null" >
+        spare3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="rightId != null" >
+        #{rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gnw.Pojo.UserPojo.RoleRightExample" resultType="java.lang.Integer" >
+    select count(*) from role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update role_right
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleId != null" >
+        role_id = #{record.roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rightId != null" >
+        right_id = #{record.rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.spare1 != null" >
+        spare1 = #{record.spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare2 != null" >
+        spare2 = #{record.spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare3 != null" >
+        spare3 = #{record.spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update role_right
+    set id = #{record.id,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=VARCHAR},
+      right_id = #{record.rightId,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      spare1 = #{record.spare1,jdbcType=VARCHAR},
+      spare2 = #{record.spare2,jdbcType=VARCHAR},
+      spare3 = #{record.spare3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.UserPojo.RoleRight" >
+    update role_right
+    <set >
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="rightId != null" >
+        right_id = #{rightId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spare1 != null" >
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.UserPojo.RoleRight" >
+    update role_right
+    set role_id = #{roleId,jdbcType=VARCHAR},
+      right_id = #{rightId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
