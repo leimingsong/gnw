@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <!--引入layui插件-->
+    <script src="../../static/plugin/layui/layui.js"></script>
+    <link rel="stylesheet" href="../../static/plugin/layui/css/layui.css">
+    <!--引入jq插件-->
+    <script src="../../static/plugin/jquery-3.3.1/jquery-3.3.1.js"></script>
+</head>
+<body>
+<form>
+    username<input type="text" style="width: 200px;height: 40px" id="account"/>
+    <br/>
+    password<input type="text" style="width: 200px;height: 40px" id="password"/>
+    <br/>
+    <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" onclick="login()">登录</button>
+</form>
+</body>
+<script>
+    function login() {
+        var account=$("#account").val();
+        var password=$("#password").val();
+        $.ajax({
+            url:"/addUser",
+            type:"POST",
+            dataType:"json",
+            data:{
+                "account":account,
+                "password":password
+            },
+            success:function(r){
+                alert(r.message);
+                if(r.falg){
+                    setTimeout("window.location.href = '/login'",100);
+                }
+            }
+        })
+    }
+</script>
+</html>
