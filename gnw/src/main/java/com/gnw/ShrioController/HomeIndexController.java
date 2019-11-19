@@ -17,7 +17,7 @@ public class HomeIndexController {
     @Autowired private RoleService roleService;
     @GetMapping("/login")
     public String defaultLogin() {
-        return "/login";
+        return "/admin/login";
     }
 
     @GetMapping("/signup")
