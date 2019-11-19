@@ -15,8 +15,5 @@ public class indexController {
     public ModelAndView Index(){
         return new ModelAndView("/index");
     }
-    @GetMapping("/admin")
-    public ModelAndView admin(){
-        return new ModelAndView("/admin/main");
-    }
+
 }

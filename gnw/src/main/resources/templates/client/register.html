@@ -7,10 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 	<title>个人注册</title>
 	<link rel="icon" href="../../static/plugin/user-defined/img/favicon.ico">
-
-
     <link rel="stylesheet" type="text/css" href="../../static/plugin/user-defined/css/all.css" />
     <link rel="stylesheet" type="text/css" href="../../static/plugin/user-defined/css/pages-register.css" />
+	<script src="../../static/plugin/jquery-3.3.1/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -80,7 +79,7 @@
 					<div class="control-group">
 						<label class="control-label">手机号：</label>
 						<div class="controls">
-							<input type="text" placeholder="请输入你的手机号" class="input-xfat input-xlarge">
+							<input type="text" placeholder="请输入你的手机号" class="input-xfat input-xlarge" id="phone">
 						</div>
 					</div>
 					<div class="control-group">
@@ -88,6 +87,7 @@
 						<div class="controls">
 							<input type="text" placeholder="验证码" class="input-xfat input-xlarge">
 						</div>
+						<input type="button" value="发送验证码" id="sendBtn" onclick="sendCode()"/>
 					</div>
 					<div class="control-group">
 						<label for="inputPassword" class="control-label">登录密码：</label>
@@ -139,5 +139,54 @@
 
 
 </body>
+
+
+	<script>
+
+		function sendCode(){
+			var phone = $("#phone").val();
+			//console.log(memPhone.length);
+			alert(phone);
+			if(phone == ''){
+				alert("请输入正确的手机号");
+				return;
+			}else{
+
+				$.ajax({
+					type: 'GET',
+					dataType: 'json',
+					url: '/phone/code',
+					data:{
+						"phone":phone
+					},
+					success: function(data) {
+						if(data){
+							timer();
+						}else{
+							alert("获取验证码失败");
+						}
+					},
+					error: function(data) {
+						alert("连接超时");
+					},
+				});
+			}
+		}
+
+		var wait = 60;
+		//倒计时
+		function timer() {
+			if(wait == 0){
+				$("#sendBtn").val("获取验证码");
+				wait = 60;
+			}else{
+				$("#sendBtn").val(wait + "秒后重发");
+				wait--;
+				setTimeout(function() {timer()}, 1000);
+			}
+		}
+
+
+	</script>
 
 </html>

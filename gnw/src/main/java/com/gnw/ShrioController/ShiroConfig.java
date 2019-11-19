@@ -53,6 +53,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/addUser", "anon");
         filterChainDefinitionMap.put("/signup", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/phone/code","anon");
+        filterChainDefinitionMap.put("/toRegister","anon");
         //这里去从数据库动态配置权限
         List<Role> roleList =roleService.getAll();
         for(Role role:roleList){
