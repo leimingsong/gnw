@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gnw.Dao.UserMapper.ProductDetailsMapper" >
+  <resultMap id="BaseResultMap" type="com.gnw.Pojo.UserPojo.ProductDetails" >
+    <id column="prod_details_id" property="prodDetailsId" jdbcType="VARCHAR" />
+    <result column="cate_id" property="cateId" jdbcType="VARCHAR" />
+    <result column="prod_details_name" property="prodDetailsName" jdbcType="VARCHAR" />
+    <result column="prod_details_comment" property="prodDetailsComment" jdbcType="VARCHAR" />
+    <result column="show_img_url" property="showImgUrl" jdbcType="VARCHAR" />
+    <result column="spare1" property="spare1" jdbcType="VARCHAR" />
+    <result column="spare2" property="spare2" jdbcType="VARCHAR" />
+    <result column="spare3" property="spare3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    prod_details_id, cate_id, prod_details_name, prod_details_comment, show_img_url, 
+    spare1, spare2, spare3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gnw.Pojo.UserPojo.ProductDetailsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_details
+    where prod_details_id = #{prodDetailsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from product_details
+    where prod_details_id = #{prodDetailsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gnw.Pojo.UserPojo.ProductDetailsExample" >
+    delete from product_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gnw.Pojo.UserPojo.ProductDetails" >
+    insert into product_details (prod_details_id, cate_id, prod_details_name, 
+      prod_details_comment, show_img_url, spare1, 
+      spare2, spare3)
+    values (#{prodDetailsId,jdbcType=VARCHAR}, #{cateId,jdbcType=VARCHAR}, #{prodDetailsName,jdbcType=VARCHAR}, 
+      #{prodDetailsComment,jdbcType=VARCHAR}, #{showImgUrl,jdbcType=VARCHAR}, #{spare1,jdbcType=VARCHAR}, 
+      #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gnw.Pojo.UserPojo.ProductDetails" >
+    insert into product_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="prodDetailsId != null" >
+        prod_details_id,
+      </if>
+      <if test="cateId != null" >
+        cate_id,
+      </if>
+      <if test="prodDetailsName != null" >
+        prod_details_name,
+      </if>
+      <if test="prodDetailsComment != null" >
+        prod_details_comment,
+      </if>
+      <if test="showImgUrl != null" >
+        show_img_url,
+      </if>
+      <if test="spare1 != null" >
+        spare1,
+      </if>
+      <if test="spare2 != null" >
+        spare2,
+      </if>
+      <if test="spare3 != null" >
+        spare3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="prodDetailsId != null" >
+        #{prodDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        #{cateId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodDetailsName != null" >
+        #{prodDetailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="prodDetailsComment != null" >
+        #{prodDetailsComment,jdbcType=VARCHAR},
+      </if>
+      <if test="showImgUrl != null" >
+        #{showImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null" >
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gnw.Pojo.UserPojo.ProductDetailsExample" resultType="java.lang.Integer" >
+    select count(*) from product_details
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product_details
+    <set >
+      <if test="record.prodDetailsId != null" >
+        prod_details_id = #{record.prodDetailsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cateId != null" >
+        cate_id = #{record.cateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodDetailsName != null" >
+        prod_details_name = #{record.prodDetailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prodDetailsComment != null" >
+        prod_details_comment = #{record.prodDetailsComment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.showImgUrl != null" >
+        show_img_url = #{record.showImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare1 != null" >
+        spare1 = #{record.spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare2 != null" >
+        spare2 = #{record.spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spare3 != null" >
+        spare3 = #{record.spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product_details
+    set prod_details_id = #{record.prodDetailsId,jdbcType=VARCHAR},
+      cate_id = #{record.cateId,jdbcType=VARCHAR},
+      prod_details_name = #{record.prodDetailsName,jdbcType=VARCHAR},
+      prod_details_comment = #{record.prodDetailsComment,jdbcType=VARCHAR},
+      show_img_url = #{record.showImgUrl,jdbcType=VARCHAR},
+      spare1 = #{record.spare1,jdbcType=VARCHAR},
+      spare2 = #{record.spare2,jdbcType=VARCHAR},
+      spare3 = #{record.spare3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gnw.Pojo.UserPojo.ProductDetails" >
+    update product_details
+    <set >
+      <if test="cateId != null" >
+        cate_id = #{cateId,jdbcType=VARCHAR},
+      </if>
+      <if test="prodDetailsName != null" >
+        prod_details_name = #{prodDetailsName,jdbcType=VARCHAR},
+      </if>
+      <if test="prodDetailsComment != null" >
+        prod_details_comment = #{prodDetailsComment,jdbcType=VARCHAR},
+      </if>
+      <if test="showImgUrl != null" >
+        show_img_url = #{showImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null" >
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null" >
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null" >
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where prod_details_id = #{prodDetailsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gnw.Pojo.UserPojo.ProductDetails" >
+    update product_details
+    set cate_id = #{cateId,jdbcType=VARCHAR},
+      prod_details_name = #{prodDetailsName,jdbcType=VARCHAR},
+      prod_details_comment = #{prodDetailsComment,jdbcType=VARCHAR},
+      show_img_url = #{showImgUrl,jdbcType=VARCHAR},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR}
+    where prod_details_id = #{prodDetailsId,jdbcType=VARCHAR}
+  </update>
+</mapper>
