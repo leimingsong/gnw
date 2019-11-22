@@ -36,6 +36,12 @@ public class HomeIndexController {
         Result result =Result.error("无权限访问");
         return result;
     }
+    @RequestMapping(value = "/getMsg",method =RequestMethod.GET )
+    @ResponseBody
+    public Result getMsg(){
+        Result result = Result.success(roleService.getAll());
+        return result;
+    }
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public Result hello(){
