@@ -1,4 +1,4 @@
-package com.gnw.Pojo.admin;
+package com.gnw.Pojo.admin.goods;
 
 import javax.persistence.Id;
 import javax.persistence.Table;

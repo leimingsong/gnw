@@ -15,7 +15,8 @@ public class indexController {
     @GetMapping("/index")
     @ResponseBody
     public ModelAndView Index(){
-        return new ModelAndView("/index");
+
+        return new ModelAndView("/admin/main");
     }
 
     @GetMapping("/toRegister")

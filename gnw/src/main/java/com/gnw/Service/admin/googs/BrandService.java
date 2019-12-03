@@ -1,7 +1,7 @@
-package com.gnw.Service.admin;
+package com.gnw.Service.admin.googs;
 
 
-import com.gnw.Pojo.admin.Brand;
+import com.gnw.Pojo.admin.goods.Brand;
 import com.gnw.entity.admin.PageResult;
 
 import java.util.List;

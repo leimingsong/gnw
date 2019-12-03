@@ -1,9 +1,9 @@
-package com.gnw.Service.admin.impl;
+package com.gnw.Service.admin.googs.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.gnw.Dao.admin.BrandMapper;
-import com.gnw.Pojo.admin.Brand;
-import com.gnw.Service.admin.BrandService;
+import com.gnw.Dao.admin.googs.BrandMapper;
+import com.gnw.Pojo.admin.goods.Brand;
+import com.gnw.Service.admin.googs.BrandService;
 import com.gnw.entity.admin.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

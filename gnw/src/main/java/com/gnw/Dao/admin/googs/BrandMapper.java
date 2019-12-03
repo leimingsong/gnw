@@ -1,7 +1,7 @@
-package com.gnw.Dao.admin;
+package com.gnw.Dao.admin.googs;
 
 
-import com.gnw.Pojo.admin.Brand;
+import com.gnw.Pojo.admin.goods.Brand;
 import org.springframework.stereotype.Repository;
 import tk.mybatis.mapper.common.Mapper;
 @Repository
