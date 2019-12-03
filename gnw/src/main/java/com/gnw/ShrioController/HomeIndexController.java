@@ -50,12 +50,12 @@ public class HomeIndexController {
     }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public Result login(@RequestParam("account") String account, @RequestParam("password") String password) {
+    public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
         Result result=null;
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
-        UsernamePasswordToken token = new UsernamePasswordToken(account, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         // 执行认证登陆
         try {
             subject.login(token);
@@ -71,10 +71,9 @@ public class HomeIndexController {
             result=Result.error("用户名或密码不正确");
         }
         if (subject.isAuthenticated()) {
-            result=Result.success(account,"登录成功");
+            result=Result.success(username,"登录成功");
         } else {
             token.clear();
-            result=Result.error("登录失败");
         }
         return result;
     }
