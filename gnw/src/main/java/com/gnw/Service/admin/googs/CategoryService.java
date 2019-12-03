@@ -5,7 +5,6 @@ package com.gnw.Service.admin.googs;
 
 import com.gnw.Pojo.admin.goods.Category;
 import com.gnw.entity.admin.PageResult;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;

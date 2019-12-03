@@ -1,10 +1,11 @@
 package com.gnw.Controller.admin.googs;
 
 
-import com.gnwtest.demo.entity.admin.PageResult;
-import com.gnwtest.demo.entity.admin.Result;
-import com.gnwtest.demo.pojo.admin.Template;
-import com.gnwtest.demo.service.admin.TemplateService;
+
+import com.gnw.Pojo.admin.goods.Template;
+import com.gnw.Service.admin.googs.TemplateService;
+import com.gnw.entity.admin.PageResult;
+import com.gnw.entity.admin.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

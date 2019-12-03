@@ -3,7 +3,7 @@ package com.gnw.Service.admin.googs.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
-import com.gnw.Dao.admin.googs.CategoryMapper;
+import com.gnw.Dao.admin.googs.CategoryMapper1;
 import com.gnw.Pojo.admin.goods.Category;
 import com.gnw.Service.admin.googs.CategoryService;
 import com.gnw.entity.admin.PageResult;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    private CategoryMapper categoryMapper;
+    private CategoryMapper1 categoryMapper;
 
     /**
      * 返回全部记录
