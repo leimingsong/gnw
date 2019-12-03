@@ -1,6 +1,7 @@
 package com.gnw.Controller.IndexController;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.gnw.Pojo.UserPojo.Checkcode;
@@ -68,10 +69,11 @@ public class PhoneCodeController {
     }
     @RequestMapping(value = "/checkCode", method = RequestMethod.GET)
     @ResponseBody
-    public Result checkCode(Checkcode checkcode){
+    public Result checkCode(@RequestParam("jsonStr")  String jsonStr){
         Result result;
+        Checkcode checkcode = JSON.parseObject(jsonStr,Checkcode.class);
         Checkcode checkcode1=codeService.getCodeById(checkcode.getId());
-        if(checkcode.getCode()==checkcode1.getCode()){
+        if(checkcode.getCode().equals(checkcode1.getCode())){
             result=Result.success();
         }else {
             result=Result.error();
