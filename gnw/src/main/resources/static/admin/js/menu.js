@@ -62,7 +62,7 @@ var menu={
                 {
                     "path": "2-2-3",
                     "title": "品牌管理",
-                    "linkUrl":"all-medical-list.html",
+                    "linkUrl":"gobrand",
                 },
                 {
                     "path": "2-2-4",
