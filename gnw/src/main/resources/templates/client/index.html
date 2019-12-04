@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
 	<meta charset="utf-8" />
@@ -9,9 +9,12 @@
 
 	<link rel="stylesheet" type="text/css" href="../../static/plugin/user-defined/css/all.css" />
 	<link rel="stylesheet" type="text/css" href="../../static/plugin/user-defined/css/pages-JD-index.css" />
+	<link rel="stylesheet" href="../../static/custom/index.css">
+
 </head>
 
 <body>
+
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
 	<div id="nav-bottom">
@@ -1819,27 +1822,27 @@
 				<!--banner轮播-->
 				<div id="myCarousel" data-ride="carousel" data-interval="4000" class="sui-carousel slide">
 					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" th:data-slide-to="${adStat.index}" th:class="${adStat.index==0?'active':''}" th:each="ad:${tbAds}"></li>
+						<!--<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>-->
 					</ol>
 					<div class="carousel-inner">
-						<div class="active item">
-							<a href="http://baidu2.wypxj.com/">
-								<img src="../../static/plugin/user-defined/img/banner1.jpg" />
+						<div th:class="${adStat.index==0?'active item':'item'}" th:each="ad:${tbAds}">
+							<a th:href="${ad.url}">
+								<img th:src="${ad.image}" />
 							</a>
 						</div>
-						<div class="item">
+						<!--<div class="item">
 							<a href="http://baidu2.wypxj.com/">
 								<img src="../../static/plugin/user-defined/img/banner2.jpg" />
 							</a>
-						</div>
-						<div class="item">
+						</div>-->
+						<!--<div class="item">
 							<a href="http://baidu2.wypxj.com/">
 								<img src="../../static/plugin/user-defined/img/banner3.jpg" />
 							</a>
 
-						</div>
+						</div>-->
 					</div>
 					<a href="#myCarousel" data-slide="prev" class="carousel-control left">‹</a>
 					<a href="#myCarousel" data-slide="next" class="carousel-control right">›</a>
